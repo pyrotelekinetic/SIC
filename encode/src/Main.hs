@@ -16,4 +16,36 @@
  -  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  -}
 
-main = putStrLn "Hello World!"
+main = do
+  i <- getContents
+  let i' = diff $ map getLevel (lines i)
+  let o = unlines $ map format i'
+  putStr o
+
+getLevel :: String -> (Int, String)
+getLevel = f 0
+  where
+  f :: Int -> String -> (Int, String)
+  f l ('\t' : ss) = f (succ l) ss
+  f l s = (l, s)
+
+diff :: [(Int, String)] -> [(Int, String)]
+diff = f 0
+  where
+  f :: Int -> [(Int, String)] -> [(Int, String)]
+  f _ [] = []
+  f l ((c, s) : xs) = (l', s) : f c xs
+    where l' = c - l
+
+dent :: Int -> String
+dent 0 = ""
+dent n
+  | n > 0 = i : dent (pred n)
+  | n < 0 = d : dent (succ n)
+  where
+  i = '\xF32A'
+  d = '\xF32B'
+
+format :: (Int, String) -> String
+format (0, s) = s
+format (n, s) = dent n ++ s
