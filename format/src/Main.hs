@@ -47,5 +47,4 @@ dent n
   d = '\xF32B'
 
 format :: (Int, String) -> String
-format (0, s) = s
 format (n, s) = dent n ++ s
