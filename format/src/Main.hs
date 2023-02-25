@@ -1,5 +1,5 @@
 {-
- -  encode-sic - A utility to convert regular text into SIC format
+ -  format-sic - A utility to convert regular text into SIC format
  -  Copyright (C) 2023  Carter "pyrotelekinetic" Ison <carter@isons.org>
  -
  -  This program is free software: you can redistribute it and/or modify

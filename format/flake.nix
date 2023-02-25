@@ -17,7 +17,7 @@ outputs = { self, nixpkgs }:
 	in {
 	packages.x86_64-linux.default =
 		pkgs.stdenv.mkDerivation {
-			name = "encode-sic";
+			name = "format-sic";
 			meta = {
 				license = pkgs.lib.licenses.agpl3Plus;
 				description = "A utility to convert regular text into SIC format";
@@ -26,8 +26,8 @@ outputs = { self, nixpkgs }:
 			buildInputs = [
 				pkgs.ghc
 			];
-			buildPhase = "ghc Main.hs -o encode-sic";
-			installPhase = "mkdir -p $out/bin; install -t $out/bin encode-sic";
+			buildPhase = "ghc Main.hs -o format-sic";
+			installPhase = "mkdir -p $out/bin; install -t $out/bin format-sic";
 		};
 
 	devShells.x86_64-linux.default = with pkgs;
