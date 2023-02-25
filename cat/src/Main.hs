@@ -29,8 +29,8 @@ main = do
   putStr . unlines $ f 4 0 i'
 
 getLevel :: Int -> String -> (Int, String)
-getLevel l (Indent : s) = getLevel (l + 1) s
-getLevel l (Dedent : s) = getLevel (l - 1) s
+getLevel l (Indent : s) = getLevel (succ l) s
+getLevel l (Dedent : s) = getLevel (pred l) s
 getLevel l s = (l, s)
 
 f :: Int -> Int -> [String] -> [String]
